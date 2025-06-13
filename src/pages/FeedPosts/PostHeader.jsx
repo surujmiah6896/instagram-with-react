@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 import ProfileAvatar from "../../components/ProfileAvatar";
 
 
-const PostHeader = () => {
+const PostHeader = ({profileImg, username}) => {
 
 	return (
 		<Flex justifyContent={"space-between"} alignItems={"center"} w={"full"} my={2}>
 			<Flex alignItems={"center"} gap={2}>
-				<ProfileAvatar img="/img1.png"/>
+				<ProfileAvatar img={profileImg}/>
 
 				<Flex fontSize={12} fontWeight={"bold"} gap='2' >
-					<Link color={"white"} to="#">USER NAME</Link>
+					<Link color={"white"} to="#">{username}</Link>
 					<Box color={"gray.500"}>
                         • 1w
                     </Box>

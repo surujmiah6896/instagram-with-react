@@ -2,7 +2,7 @@ import { Box, Button, Flex, Input, Text } from '@chakra-ui/react'
 import React, { useRef, useState } from 'react'
 import { CommentLogo, NotificationsLogo, UnlikeLogo } from '../../assets/constants';
 
-const PostFooter = () => {
+const PostFooter = ({username}) => {
     const [liked, setLiked] = useState(false);
     const [likes, setLikes] = useState(1000);
     const commentRef = useRef(null);
@@ -34,7 +34,7 @@ const PostFooter = () => {
             </Text>
 
             <Text fontSize='sm' fontWeight={700}>
-                username_
+                {username}{" "}
                 <Text as={'span'} fontWeight={400}>Feeling good</Text>
             </Text> 
 
