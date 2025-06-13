@@ -9,7 +9,7 @@ const SuggestedUser = ({name, followers, avatar}) => {
         <Flex justifyContent={"space-between"} alignItems={"center"} w={"full"}>
             <Flex alignItems={"center"} gap={2}>
                 <ProfileAvatar img={avatar} />
-                <VStack spacing={12}>
+                <VStack spacing={12} alignItems={"flex-start"}>
                     <Box fontSize={12} fontWeight={"bold"}>
                         {name}
                     </Box>
@@ -26,6 +26,8 @@ const SuggestedUser = ({name, followers, avatar}) => {
                 h={"max-content"}
                 fontWeight={"medium"}
                 cursor={"pointer"}
+                _hover={{color:"whiteAlpha.500"}}
+                onClick={() => setIsFollowed(!isFollowed)}
             >
                 {isFollowed ? "Unfollow" : "Follow"}
             </Button>

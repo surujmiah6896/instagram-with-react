@@ -5,6 +5,7 @@ import { CreatePostLogo, InstagramLogo, InstagramMobileLogo, NotificationsLogo, 
 import { AiFillHome } from "react-icons/ai";
 import { BiLogOut } from "react-icons/bi";
 import SidebarItems from "./SidebarItems";
+import ProfileAvatar from "../ProfileAvatar";
 
 const Sidebar = () => {
     const sidebarItems = [
@@ -28,11 +29,11 @@ const Sidebar = () => {
             text: "Create",
             // link: "/",
         },
-        // {
-        //     icon:<Avatar size={"sm"} name={"Md. Suruj Miah"} src="/profilepic.png"/>,
-        //     text: "Profile",
-        //     // link: "/",
-        // },
+        {
+            icon: <ProfileAvatar img="img4.png"/>,
+            text: "Profile",
+            link: "/suruj6896",
+        },
     ];
   return (
    <>
