@@ -1,10 +1,53 @@
-import React from 'react'
+import { Box, Button, Flex, Input, Text } from '@chakra-ui/react'
+import React, { useRef, useState } from 'react'
+import { CommentLogo, NotificationsLogo, UnlikeLogo } from '../../assets/constants';
 
 const PostFooter = () => {
+    const [liked, setLiked] = useState(false);
+    const [likes, setLikes] = useState(1000);
+    const commentRef = useRef(null);
+
+    const handleLike = () =>{
+        if(liked){
+            setLiked(false);
+            setLikes(likes - 1);
+        }else{
+            setLiked(true);
+            setLikes(likes + 1);
+        }
+    }
   return (
-    <div>
-      post pooter
-    </div>
+    <>
+        <Box my={4}>
+            <Flex alignItems={"center"} gap={2} w={"full"} pt={0} mb={0} my={4}>
+            <Box onClick={handleLike} cursor={"pointer"} fontSize={15}>
+                {!liked ? (<NotificationsLogo/>) : <UnlikeLogo/>}
+            </Box>
+
+            <Box cursor={"pointer"} fontSize={18} onClick={() => commentRef.current.focus()}>
+                <CommentLogo />
+            </Box>
+            </Flex>
+
+            <Text fontWeight={600} fontSize={"sm"}>
+                {likes} likes
+            </Text>
+
+            <Text fontSize='sm' fontWeight={700}>
+                username_
+                <Text as={'span'} fontWeight={400}>Feeling good</Text>
+            </Text> 
+
+            <Text fontSize='sm' color={"gray"}>
+                view all 1,000 comments
+            </Text>
+
+            <Flex alignItems={"center"} gap={2} justifyContent={"space-between"} w={"full"}>
+                <Input color={"whiteAlpha.400"} placeholder={"Add a Comment..."} fontSize={14}></Input>
+                <Button fontSize={14} fontWeight={600} cursor={"pointer"} color={"blue.500"} _hover={{color:"white"}} bg={"transparent"}>Post</Button>
+            </Flex>
+        </Box>
+    </>
   )
 }
 
