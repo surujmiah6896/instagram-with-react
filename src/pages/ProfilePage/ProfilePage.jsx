@@ -23,7 +23,6 @@ const ProfilePage = () => {
             direction={"column"}
             >
                 <ProfileTabs/>
-                <ProfileTabs/>
             </Flex>
         </Container>
     </>
