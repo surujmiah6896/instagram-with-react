@@ -1,5 +1,6 @@
 import { Box, Flex, Text } from "@chakra-ui/react"
 import { BsBookmark, BsGrid3X3, BsSuitHeart } from "react-icons/bs"
+import ProfilePosts from "./ProfilePosts"
 
 const ProfileTabs = () => {
   return (
@@ -34,6 +35,8 @@ const ProfileTabs = () => {
 
 
       </Flex>
+
+      <ProfilePosts/>
     </>
   )
 }

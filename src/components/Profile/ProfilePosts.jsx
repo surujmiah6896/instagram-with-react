@@ -1,8 +1,9 @@
 import { Box, Grid, Skeleton, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import ProfilePost from './ProfilePost';
 
 const ProfilePosts = () => {
-    const [isLoading, setLoading] = useState(true);
+    const [isLoading, setLoading] = useState(false);
   return (
     <Grid templateColumns={{
         sm: "repeat(1,1fr)",
@@ -21,7 +22,10 @@ const ProfilePosts = () => {
 
         {!isLoading && (
             <>
-                <ProfilePost/>
+                <ProfilePost img="/img1.png"/>
+                <ProfilePost img="/img2.png"/>
+                <ProfilePost img="/img3.png"/>
+                <ProfilePost img="/img4.png"/>
             </>
         )}
     </Grid>
