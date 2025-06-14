@@ -13,7 +13,7 @@ const ProfilePage = () => {
                 mx={"auto"}
                 flexDirection={"column"}
             >
-                <ProfileHeader/>
+                <ProfileHeader profileImg="/img2.png"/>
             </Flex>
             <Flex
             px={{base:2, sm:4}}

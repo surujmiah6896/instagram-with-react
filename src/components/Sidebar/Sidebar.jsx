@@ -1,11 +1,9 @@
-import { Avatar, Box, Flex, Link } from "@chakra-ui/react";
-import { Tooltip } from "@/components/ui/tooltip";
+import { Avatar, Box, Flex, Link,Tooltip } from "@chakra-ui/react";
 import {Link as RouterLink} from 'react-router-dom';
 import { CreatePostLogo, InstagramLogo, InstagramMobileLogo, NotificationsLogo, SearchLogo } from "../../assets/constants";
 import { AiFillHome } from "react-icons/ai";
 import { BiLogOut } from "react-icons/bi";
 import SidebarItems from "./SidebarItems";
-import ProfileAvatar from "../ProfileAvatar";
 
 const Sidebar = () => {
     const sidebarItems = [
@@ -30,7 +28,7 @@ const Sidebar = () => {
             // link: "/",
         },
         {
-            icon: <ProfileAvatar img="img4.png"/>,
+            icon: <Avatar src="/img4.png" />,
             text: "Profile",
             link: "/suruj6896",
         },

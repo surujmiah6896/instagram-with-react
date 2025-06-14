@@ -1,5 +1,4 @@
-import { Box, Button, Flex, VStack } from "@chakra-ui/react"
-import ProfileAvatar from "../ProfileAvatar"
+import { Box, Button,Avatar, Flex, VStack } from "@chakra-ui/react"
 import { useState } from "react"
 
 const SuggestedUser = ({name, followers, avatar}) => {
@@ -8,7 +7,7 @@ const SuggestedUser = ({name, followers, avatar}) => {
     <>
         <Flex justifyContent={"space-between"} alignItems={"center"} w={"full"}>
             <Flex alignItems={"center"} gap={2}>
-                <ProfileAvatar img={avatar} />
+            <Avatar name='Dan Abrahmov' src={avatar} />
                 <VStack spacing={12} alignItems={"flex-start"}>
                     <Box fontSize={12} fontWeight={"bold"}>
                         {name}

@@ -2,7 +2,7 @@ import { Box, Container, Flex, Skeleton, SkeletonCircle, VStack } from '@chakra-
 import React, { useEffect, useState } from 'react'
 import FeedPost from './FeedPost'
 
-const FeedPosts = () => {
+const FeedPosts = ({img}) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(()=>{

@@ -1,9 +1,20 @@
-import { Flex, GridItem, Image, Text } from '@chakra-ui/react'
-import React from 'react'
+import { Button, Flex, GridItem, Image, Text, } from '@chakra-ui/react'
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  ModalCloseButton,
+  useDisclosure
+} from "@chakra-ui/react"; 
 import { AiFillHeart } from 'react-icons/ai'
 import { FaComment } from 'react-icons/fa'
 
 const ProfilePost = ({img}) => {
+  // const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
     <GridItem
@@ -14,7 +25,7 @@ const ProfilePost = ({img}) => {
       borderColor={"whiteAlpha.300"}
       position={"relative"}
       aspectRatio={1 / 1}
-      // onClick={onOpen}
+      onClick={onOpen}
     >
       <Flex
         opacity={0}
@@ -49,7 +60,23 @@ const ProfilePost = ({img}) => {
       <Image src={img} alt='profile post' w={"100%"} h={"100%"} objectFit={"cover"} />
     </GridItem>
 
-   
+    <Modal isOpen={isOpen} onClose={onClose} isCentered>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Modal Title</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            This is the body of the modal.
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button variant="ghost">Secondary Action</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
   </>
   )
 }

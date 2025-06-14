@@ -1,7 +1,6 @@
-import { Button, Flex, Text, VStack } from '@chakra-ui/react'
-import ProfileAvatar from '../ProfileAvatar'
+import { Avatar, AvatarGroup, Button, Flex, Text, VStack } from '@chakra-ui/react'
 
-const ProfileHeader = () => {
+const ProfileHeader = ({profileImg}) => {
   return (
     <>
         <Flex 
@@ -9,7 +8,9 @@ const ProfileHeader = () => {
             py={10}
             direction={{base:"column", sm:"row"}}
         >
-            <ProfileAvatar img="/img4.png" />
+            <AvatarGroup size={{ base: "xl", md: "2xl" }} justifySelf={"center"} alignSelf={"flex-start"} mx={"auto"}>
+				<Avatar src={profileImg} alt='As a programmer logo' />
+			</AvatarGroup>
 
             <VStack alignItems={"start"} gap={2} mx={"auto"} flex={1}>
                 <Flex
