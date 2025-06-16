@@ -100,7 +100,54 @@ const ProfilePost = ({img}) => {
                       </Box>
                   </Flex>
                   <Divider  bg={"gray.500"} my={4}/>
-                  <VStack alignItems={"start"} maxH={"350px"} overflow={"auto"} w={"full"}>
+                  <VStack alignItems={"start"} maxH={"350px"} overflowY={"auto"} w={"full"}>
+                      <Comment 
+                        createdAt='1d ago'
+                        username='Md. Suruj Miah'
+                        profilePhoto="/img3.png"
+                        text="Looking Good"
+                      />
+
+                      <Comment 
+                        createdAt='1d ago'
+                        username='Md. Suruj Miah'
+                        profilePhoto="/img3.png"
+                        text="Looking Good"
+                      />
+
+                      <Comment 
+                        createdAt='1d ago'
+                        username='Md. Suruj Miah'
+                        profilePhoto="/img3.png"
+                        text="Looking Good"
+                      />
+
+                      <Comment 
+                        createdAt='1d ago'
+                        username='Md. Suruj Miah'
+                        profilePhoto="/img3.png"
+                        text="Looking Good"
+                      />
+                      <Comment 
+                        createdAt='1d ago'
+                        username='Md. Suruj Miah'
+                        profilePhoto="/img3.png"
+                        text="Looking Good"
+                      />
+
+                      <Comment 
+                        createdAt='1d ago'
+                        username='Md. Suruj Miah'
+                        profilePhoto="/img3.png"
+                        text="Looking Good"
+                      />
+
+                      <Comment 
+                        createdAt='1d ago'
+                        username='Md. Suruj Miah'
+                        profilePhoto="/img3.png"
+                        text="Looking Good"
+                      />
                       <Comment 
                         createdAt='1d ago'
                         username='Md. Suruj Miah'
