@@ -22,6 +22,7 @@ import { AiFillHeart } from 'react-icons/ai'
 import { FaComment } from 'react-icons/fa'
 import { MdDelete } from "react-icons/md";
 import Comment from "../Comment/Comment";
+import PostFooter from "../../pages/FeedPosts/PostFooter";
 
 const ProfilePost = ({img}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -121,6 +122,8 @@ const ProfilePost = ({img}) => {
                         text="Looking Good"
                       />
                   </VStack>
+                  <Divider my={4} bg={"gray.800"} />
+                  <PostFooter isProfilePage={true}/>
                 </Flex>
             </Flex>
           </ModalBody>
