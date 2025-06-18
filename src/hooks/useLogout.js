@@ -5,12 +5,14 @@ import UseAuthStore from '../store/authStore';
 const useLogout = () => {
     const [signOut, loading, error] = useSignOut(auth);
     const showToast = useShowToast();
+    const logoutUser = UseAuthStore((state) => state.logout);
 
     const handelLogout = async () => {
         try{
             await signOut();
             localStorage.removeItem('user-info');
             showToast("Success","Logout Successfully", "success");
+            logoutUser();
         }catch(error){
             showToast("Error",error.message, "error");
         }
