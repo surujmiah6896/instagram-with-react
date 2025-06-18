@@ -1,34 +1,19 @@
 import { Box, Button, Flex, Image, Input, Text, VStack } from "@chakra-ui/react"
 import { useState } from "react"
+import Login from "./Login";
+import Signup from "./Signup";
 
 const AuthForm = () => {
-  const [isLogin, setIsLogin] = useState(true);
-  const [inputs, setInputes] = useState({
-    email: '',
-    password: '',
-    confirmPassword:''
-  })
-
-  const handleAuth = () => {
-    console.log("inputs:", inputs);
-    if(!inputs.email || !inputs.password){
-      alert('Please fill all the fields');
-      return;
-    }
-  }
-
+  const [isLogin, setIsLogin] = useState(false);
+  
   return (
     <>
     
     <Box border={"1px solid gray"} borderRadius={4} padding={5}>
       <VStack spacing={4}>
         <Image src="/logo.png" h={24} cursor={"pointer"} alt="Instagram" />
-        <Input placeholder="Enter Email" type="email" value={inputs.email} onChange={(e) => setInputes({...inputs, email:e.target.value})} border={"0.5px solid"} fontSize={14} />
-        <Input placeholder="Enter Password" type="password" value={inputs.password} onChange={(e) => setInputes({...inputs, password:e.target.value})} border={"0.5px solid"} fontSize={14} />
-        {!isLogin ? (<Input placeholder="Enter Confirm Password" type="password" value={inputs.confirmPassword} onChange={(e) => setInputes({...inputs,confirmPassword:e.target.value})} border={"0.5px solid"} fontSize={14} />) : null}
-        <Button onClick={handleAuth} w={"full"} colorScheme='blue' size={"sm"} color={"white"} fontSize={14} >
-          {isLogin ? "Login" : "Sign Up"}
-        </Button>
+        {isLogin ? (<Login />) : (<Signup/>)}
+      
 
         {/* -----------------Or text --------------------*/}
         <Flex alignItems={"center"} justifyContent={"center"} my={4} gap={1} w={"full"}>
