@@ -9,7 +9,7 @@ const SuggestedHeader = () => {
     <Flex alignItems={"center"} gap={2}>
         <Avatar name='Dan Abrahmov' src='profilepic.png' />
         <Text fontSize={12} fontWeight={'bold'}>
-            {authUser.username}
+            {authUser ? authUser.username : null}
         </Text>
     </Flex>
     <Button
