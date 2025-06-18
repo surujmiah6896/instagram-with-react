@@ -1,6 +1,6 @@
 import { Avatar, AvatarGroup, Button, Flex, Text, VStack } from '@chakra-ui/react'
 
-const ProfileHeader = ({profileImg}) => {
+const ProfileHeader = ({username, profileImg}) => {
   return (
     <>
         <Flex 
@@ -21,7 +21,7 @@ const ProfileHeader = ({profileImg}) => {
                     w={"full"}
                 >
                     <Text fontSize={{base: "sm", md:"lg"}}>
-                        username
+                        {username}
                     </Text>
                     <Flex gap={4} alignItems={"center"} justifyContent={"center"}>
                         <Button bg={"white"} color={"black"} _hover={{bg:"whiteAlpha.800"}} size={{base:"xs", md:'sm'}}>

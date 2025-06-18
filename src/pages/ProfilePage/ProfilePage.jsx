@@ -1,8 +1,12 @@
 import { Container, Flex } from '@chakra-ui/react'
 import ProfileHeader from '../../components/Profile/ProfileHeader'
 import ProfileTabs from '../../components/Profile/ProfileTabs'
+import UseAuthStore from '../../store/authStore';
 
 const ProfilePage = () => {
+    const authUser = UseAuthStore(state => state.user);
+    console.log(authUser);
+    
   return (
     <>
         <Container maxW={"container.lg"} py={5}>
@@ -13,7 +17,7 @@ const ProfilePage = () => {
                 mx={"auto"}
                 flexDirection={"column"}
             >
-                <ProfileHeader profileImg="/img2.png"/>
+                <ProfileHeader username={authUser.username} profileImg="/img2.png"/>
             </Flex>
             <Flex
             px={{base:2, sm:4}}
