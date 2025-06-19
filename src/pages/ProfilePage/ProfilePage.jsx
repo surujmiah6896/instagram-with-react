@@ -5,7 +5,7 @@ import UseAuthStore from '../../store/authStore';
 
 const ProfilePage = () => {
     const authUser = UseAuthStore(state => state.user);
-    console.log(authUser);
+    console.log(authUser.profilePicURL);
     
   return (
     <>
@@ -17,7 +17,7 @@ const ProfilePage = () => {
                 mx={"auto"}
                 flexDirection={"column"}
             >
-                <ProfileHeader username={authUser.username} profileImg="/img2.png"/>
+                <ProfileHeader username={authUser.username} profileImg={authUser.profilePicURL}/>
             </Flex>
             <Flex
             px={{base:2, sm:4}}

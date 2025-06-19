@@ -7,7 +7,7 @@ const SuggestedHeader = () => {
   return (
    <Flex justifyContent={"space-between"} alignItems={"center"} w={"full"}>
     <Flex alignItems={"center"} gap={2}>
-        <Avatar name='Dan Abrahmov' src='profilepic.png' />
+        <Avatar name='Dan Abrahmov' src={authUser.profilePicURL} />
         <Text fontSize={12} fontWeight={'bold'}>
             {authUser ? authUser.username : null}
         </Text>
