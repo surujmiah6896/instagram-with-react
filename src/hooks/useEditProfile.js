@@ -23,8 +23,10 @@ const useEditProfile = () => {
         let URL = "";
         try{
             if(selectedFile){
-                await uploadString(storageRef, selectedFile, "data_url");
-                URL = await getDownloadURL(ref(storage, `profilePhotos/${authUser.uid}`));
+                Toast("Success", "File not updated because have not storage", "success");
+                return;
+                // await uploadString(storageRef, selectedFile, "data_url");
+                // URL = await getDownloadURL(ref(storage, `profilePhotos/${authUser.uid}`));
             }
 
             const updatedUser = {
