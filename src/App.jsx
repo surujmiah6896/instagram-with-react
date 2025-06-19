@@ -8,7 +8,8 @@ import { auth } from "./firebase/firebase"
 import UseAuthStore from "./store/authStore"
 
 function App() {  
-  const authUser = useAuthState(auth);
+  // const authUser = useAuthState(auth);
+  const authUser = UseAuthStore((state) => state.user);
   console.log("app auth:" ,authUser);
   
 
