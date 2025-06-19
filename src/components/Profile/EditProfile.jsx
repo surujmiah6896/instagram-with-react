@@ -19,9 +19,7 @@ import { useRef, useState } from "react";
 import UseAuthStore from "../../store/authStore";
 import useShowToast from "../../hooks/useShowToast";
 import usePreviewImg from "../../hooks/usePreviewImg";
-// import usePreviewImg from "../../hooks/usePreviewImg";
-// import useEditProfile from "../../hooks/useEditProfile";
-// import useShowToast from "../../hooks/useShowToast";
+import useEditProfile from "../../hooks/useEditProfile";
 
 const EditProfile = ({ isOpen, onClose }) => {
 	const [inputs, setInputs] = useState({
@@ -32,17 +30,17 @@ const EditProfile = ({ isOpen, onClose }) => {
 	const authUser = UseAuthStore((state) => state.user);
 	const fileRef = useRef(null);
 	const { handleImage, selectedFile, setSelectedFile } = usePreviewImg();
-	// const { isUpdating, editProfile } = useEditProfile();
+	const { isUpdating, editProfile } = useEditProfile();
 	const showToast = useShowToast();
 
 	const handleEditProfile = async () => {
-		// try {
-		// 	await editProfile(inputs, selectedFile);
-		// 	setSelectedFile(null);
-		// 	onClose();
-		// } catch (error) {
-		// 	showToast("Error", error.message, "error");
-		// }
+		try {
+			await editProfile(inputs, selectedFile);
+			setSelectedFile(null);
+			onClose();
+		} catch (error) {
+			showToast("Error", error.message, "error");
+		}
 	};
 
 	return (
@@ -127,6 +125,8 @@ const EditProfile = ({ isOpen, onClose }) => {
 										size='sm'
 										w='full'
 										_hover={{ bg: "blue.500" }}
+                                        isLoading={isUpdating}
+                                        onClick={handleEditProfile}
 									>
 										Submit
 									</Button>
