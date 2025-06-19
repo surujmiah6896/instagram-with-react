@@ -8,8 +8,6 @@ import UserNotFound from '../../components/User/UserNotFound';
 import ProfileHeaderSkeleton from './ProfileHaderSkeleton';
 
 const ProfilePage = () => {
-    const authUser = UseAuthStore(state => state.user);
-    console.log(authUser.profilePicURL);
     const {username} = useParams();
     const {isLoading, userProfile} = useGetUserProfileBYUserName(username);
     const userNotFound = !isLoading && !userProfile;
@@ -26,7 +24,7 @@ const ProfilePage = () => {
                 mx={"auto"}
                 flexDirection={"column"}
             >
-                {!isLoading && userProfile && (<ProfileHeader username={authUser.username} profileImg={authUser.profilePicURL}/>)}
+                {!isLoading && userProfile && (<ProfileHeader/>)}
                 {isLoading && <ProfileHeaderSkeleton/>}
                 
             </Flex>

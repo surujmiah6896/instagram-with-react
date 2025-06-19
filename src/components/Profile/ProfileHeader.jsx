@@ -1,6 +1,10 @@
 import { Avatar, AvatarGroup, Button, Flex, Text, VStack } from '@chakra-ui/react'
+import useUserProfileStore from '../../store/userProfileStore'
 
-const ProfileHeader = ({username, profileImg}) => {
+const ProfileHeader = () => {
+    const {userProfile} = useUserProfileStore();
+    console.log("userProfile", userProfile);
+    
   return (
     <>
         <Flex 
@@ -9,7 +13,7 @@ const ProfileHeader = ({username, profileImg}) => {
             direction={{base:"column", sm:"row"}}
         >
             <AvatarGroup size={{ base: "xl", md: "2xl" }} justifySelf={"center"} alignSelf={"flex-start"} mx={"auto"}>
-				<Avatar src={profileImg} alt='As a programmer logo' />
+				<Avatar src={userProfile.profilePicURL} name={userProfile.username} alt='As a programmer logo' />
 			</AvatarGroup>
 
             <VStack alignItems={"start"} gap={2} mx={"auto"} flex={1}>
@@ -21,7 +25,7 @@ const ProfileHeader = ({username, profileImg}) => {
                     w={"full"}
                 >
                     <Text fontSize={{base: "sm", md:"lg"}}>
-                        {username ?? null}
+                    {userProfile.username}
                     </Text>
                     <Flex gap={4} alignItems={"center"} justifyContent={"center"}>
                         <Button bg={"white"} color={"black"} _hover={{bg:"whiteAlpha.800"}} size={{base:"xs", md:'sm'}}>
@@ -33,26 +37,26 @@ const ProfileHeader = ({username, profileImg}) => {
 
                 <Flex alignItems={"center"} gap={{base:2, sm:4}}>
                     <Text fontSize={{base:"xs", md:"sm"}}>
-                        <Text as="span" fontWeight={"bold"} mr={1}>4</Text>
+                        <Text as="span" fontWeight={"bold"} mr={1}>{userProfile.posts.length}</Text>
                         Posts
                     </Text>
                     <Text fontSize={{base:"xs", md:"sm"}}>
-                        <Text as="span" fontWeight={"bold"} mr={1}>234</Text>
+                        <Text as="span" fontWeight={"bold"} mr={1}>{userProfile.followers.length}</Text>
                         Followers
                     </Text> 
                     <Text fontSize={{base:"xs", md:"sm"}}>
-                        <Text as="span" fontWeight={"bold"} mr={1}>175</Text>
-                        Posts
+                        <Text as="span" fontWeight={"bold"} mr={1}>{userProfile.following.length}</Text>
+                        Following
                     </Text>
                 </Flex>
 
                 <Flex alignItems={"center"} gap={4}>
                     <Text fontSize={"sm"} fontWeight={"bold"}>
-                        title
+                        {userProfile.fullName}
                     </Text>
                 </Flex>
                 <Text fontSize={"sm"}>
-                    user description dsfsd sdfsdfsdf sdfsd fsdfsdf  sdfsdfsdfsd sfdfsdfsdfsdfsdfsdfsdf
+                    {userProfile.bio}
                 </Text>
 
             </VStack>
