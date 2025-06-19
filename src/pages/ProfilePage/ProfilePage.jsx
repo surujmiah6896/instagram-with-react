@@ -2,10 +2,19 @@ import { Container, Flex } from '@chakra-ui/react'
 import ProfileHeader from '../../components/Profile/ProfileHeader'
 import ProfileTabs from '../../components/Profile/ProfileTabs'
 import UseAuthStore from '../../store/authStore';
+import { useParams } from 'react-router-dom';
+import useGetUserProfileBYUserName from '../../hooks/useGetUserProfileBYUserName';
+import UserNotFound from '../../components/User/UserNotFound';
+import ProfileHeaderSkeleton from './ProfileHaderSkeleton';
 
 const ProfilePage = () => {
     const authUser = UseAuthStore(state => state.user);
     console.log(authUser.profilePicURL);
+    const {username} = useParams();
+    const {isLoading, userProfile} = useGetUserProfileBYUserName(username);
+    const userNotFound = !isLoading && !userProfile;
+    
+    if(userNotFound) return <UserNotFound/>;
     
   return (
     <>
@@ -17,7 +26,9 @@ const ProfilePage = () => {
                 mx={"auto"}
                 flexDirection={"column"}
             >
-                <ProfileHeader username={authUser.username} profileImg={authUser.profilePicURL}/>
+                {!isLoading && userProfile && (<ProfileHeader username={authUser.username} profileImg={authUser.profilePicURL}/>)}
+                {isLoading && <ProfileHeaderSkeleton/>}
+                
             </Flex>
             <Flex
             px={{base:2, sm:4}}
@@ -34,3 +45,4 @@ const ProfilePage = () => {
 }
 
 export default ProfilePage
+

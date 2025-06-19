@@ -6,7 +6,7 @@ import { firestore } from "../firebase/firebase";
 
 const useGetUserProfileBYUserName = (username) => {
 
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const Toast = useShowToast();
     const {userProfile, setUserProfile} = useUserProfileStore();
 
@@ -30,7 +30,7 @@ const useGetUserProfileBYUserName = (username) => {
                 });
 
                 setUserProfile(userDoc);
-                console.log(userDoc);
+                console.log("userdoc",userDoc);
             }catch(error){
                 Toast("Error", error.message, "error");
             }finally{

@@ -1,9 +1,10 @@
 import { useToast } from "@chakra-ui/react"
+import { useCallback } from "react";
 
 const useShowToast = () => {
     const toast = useToast();
 
-    const showToast = (title, des, status) => {
+    const showToast = useCallback((title, des, status) => {
         toast({
             title: title,
             description: des,
@@ -11,7 +12,7 @@ const useShowToast = () => {
             duration: 3000,
             isClosable: true,
         });
-    };
+    },[toast])
     return showToast;
 }
 
