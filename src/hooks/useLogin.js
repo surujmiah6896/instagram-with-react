@@ -24,7 +24,9 @@ const useLogin = () => {
         if(authSnapshot){
             const userRef = doc(firestore, "users", authSnapshot.user.uid);
             const userSnapshot = await getDoc(userRef);
-            loginUser(userSnapshot.data());
+            const userDoc = userSnapshot.data();
+            loginUser(userDoc);
+            localStorage.setItem("user-info", JSON.stringify(userDoc));
         }
         showToast('Success', "User Login Successful", "success");
         }catch(error){

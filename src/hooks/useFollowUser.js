@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import {useShowToast} from "../hooks/useShowToast";
-import {useAuthStore} from "../store/authStore";
-import { auth, firestore } from "../firebase/firebase";
-import {userProfileStore} from "../store/userProfileStore";
+import useShowToast from "./useShowToast";
+import UseAuthStore from "../store/authStore";
+import { firestore } from "../firebase/firebase";
+import userProfileStore from "../store/userProfileStore";
 import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
 
 const useFollowUser = (userId) => {
     const [isUpdating, setIsUpdating] = useState(false);
     const [isFollowing, setIsFollowing] = useState(false);
-    const authUser = useAuthStore((state) => state.user);
-    const setAuthUser = useAuthStore((state) => state.setUser);
+    const authUser = UseAuthStore((state) => state.user);
+    const setAuthUser = UseAuthStore((state) => state.setUser);
     const {userProfile, setUserProfile} = userProfileStore();
     const Toast = useShowToast();
 
@@ -48,6 +48,7 @@ const useFollowUser = (userId) => {
               }));
 
               setIsFollowing(false);
+              Toast("Success", "Unfollow Successfully", "success");
             }else{
               //follow
               setAuthUser({
@@ -68,6 +69,7 @@ const useFollowUser = (userId) => {
               }));
 
               setIsFollowing(true);
+              Toast("Success", "Follow Successfully", "success");
             }
 
           } catch (error) {
