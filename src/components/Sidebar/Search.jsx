@@ -21,10 +21,16 @@ import SuggestedUser from "../SuggestedUsers/SuggestedUser";
 
 const Search = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {isLoading, user, setUser, getUserInfo} = useSearchUser();
   const searchRef = useRef(null);
 
   const handleSearchUser = (e) => {
     e.preventDefault();
+    getUserInfo(searchRef.current.value);
+
+    console.log("users", user);
+    
+
   };
 
   return (
@@ -61,7 +67,7 @@ const Search = () => {
             <form onSubmit={handleSearchUser}>
               <FormControl>
                 <FormLabel>Username</FormLabel>
-                <Input placeholder="asaprogrammer" ref={searchRef} />
+                <Input placeholder="Enter username" ref={searchRef} />
               </FormControl>
 
               <Flex w={"full"} justifyContent={"flex-end"}>
@@ -70,11 +76,14 @@ const Search = () => {
                   ml={"auto"}
                   size={"sm"}
                   my={4}
+                  isLoading={isLoading}
                 >
                   Search
                 </Button>
               </Flex>
             </form>
+
+            {user && <SuggestedUser user={user} setUser={setUser} />}
           </ModalBody>
         </ModalContent>
       </Modal>

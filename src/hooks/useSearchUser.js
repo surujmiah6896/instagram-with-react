@@ -14,7 +14,7 @@ const useSearchUser = () => {
         try {
             const q = query(collection(firestore, "users"), where("username","==", username ));
             const querySnapShot = await getDocs(q);
-            if(querySnapShot.empty()){
+            if(querySnapShot.empty){
                 Toast("Error", "User not found", "error");
                 return;
             }
