@@ -6,7 +6,7 @@ import { firestore } from "../firebase/firebase";
 
 const useGetSuggestedUsers = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const [suggestedUsers, setSuggestedUsers] = useState(null);
+    const [suggestedUsers, setSuggestedUsers] = useState([]);
     const authUser = UseAuthStore((state) => state.user);
     const Toast = useShowToast();
 
@@ -23,9 +23,10 @@ const useGetSuggestedUsers = () => {
     
                 qSnapShot.forEach((doc) => {
                     users.push({...doc.data(), id: doc.id});
-                })
-    
+                });
                 setSuggestedUsers(users);
+                console.log("setSuggestedUsers", users);
+                
                 
             } catch (error) {
                 Toast("Error", error.message, "error");
@@ -33,11 +34,10 @@ const useGetSuggestedUsers = () => {
                 setIsLoading(false);
             }
         }
-        if(authUser){
-            getSuggestedUsers();
-        }
+        if(authUser) getSuggestedUsers();
+        
     },[authUser, Toast]);
-    
+
   return {isLoading, suggestedUsers};
 }
 
