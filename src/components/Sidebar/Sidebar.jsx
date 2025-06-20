@@ -8,33 +8,7 @@ import useLogout from "../../hooks/useLogout";
 
 const Sidebar = () => {
     const {handelLogout, loading} = useLogout();
-    const sidebarItems = [
-        {
-            icon:<AiFillHome size={25}/>,
-            text: "Home",
-            link: "/",
-        },
-        {
-            icon:<SearchLogo />,
-            text: "Search",
-            // link: "/",
-        },
-        {
-            icon:<NotificationsLogo />,
-            text: "Notifications",
-            // link: "/",
-        },
-        {
-            icon:<CreatePostLogo/>,
-            text: "Create",
-            // link: "/",
-        },
-        {
-            icon: <Avatar src="/img4.png" />,
-            text: "Profile",
-            link: "/suruj6896",
-        },
-    ];
+    
   return (
    <>
     <Box 
@@ -71,35 +45,7 @@ const Sidebar = () => {
 
         
            <Flex direction={"column"} gap={5} cursor={'pointer'}>
-           {sidebarItems.map((item, index) => (
-                <Tooltip 
-                key={index}
-                hasArrow
-                label={item.text}
-                placement='right'
-                openDelay={500}
-                ml={1}
-                display={{base:"block", md:"none"}}
-                >
-                    <Link
-                    display={"flex"}
-                    to={item.link || "#"}
-                    as={RouterLink}
-                    alignItems={"center"}
-                    gap={4}
-                    _hover={{bg:"whiteAlpha.400"}}
-                    borderRadius={6}
-                    p={2}
-                    w={{base:10, md:"full"}}
-                    color={"white"}
-                    >
-                        {item.icon}
-                        <Box display={{base:"none", md:"block"}} color={"white"}>
-                            {item.text}
-                        </Box>
-                    </Link>
-                </Tooltip>
-            ))}
+           <SidebarItems />
            </Flex>
 
            <Tooltip 
