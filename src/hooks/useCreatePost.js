@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import { addDoc, arrayUnion, collection, doc, updateDoc } from "firebase/firestore";
 import { firestore, storage } from "../firebase/firebase";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
-import { PostStore } from "../store/postStore";
+import usePostStore from "../store/postStore";
 
 
 const useCreatePost = () => {
@@ -14,14 +14,14 @@ const useCreatePost = () => {
         const Toast = useShowToast();
         const [isLoading, setIsLoading] = useState(false);
         const authUser = UseAuthStore((state) => state.user);
-        const createPost = PostStore((state) => state.createPost);
+        const createPost = usePostStore((state) => state.createPost);
         const addPost = useUserProfileStore((state) => state.addPost);
         const userProfile = useUserProfileStore((state) => state.userProfile);
         const { pathname } = useLocation();
       
         const handleCreatePost = async (selectedFile, caption) => {
           if (isLoading) return;
-          if (!selectedFile) throw new Error("Please select an image");
+        //   if (!selectedFile) throw new Error("Please select an image");
           setIsLoading(true);
           const newPost = {
             caption: caption,
@@ -37,12 +37,14 @@ const useCreatePost = () => {
             const imageRef = ref(storage, `posts/${postDocRef.id}`);
       
             await updateDoc(userDocRef, { posts: arrayUnion(postDocRef.id) });
-            await uploadString(imageRef, selectedFile, "data_url");
-            const downloadURL = await getDownloadURL(imageRef);
-      
-            await updateDoc(postDocRef, { imageURL: downloadURL });
-      
-            newPost.imageURL = downloadURL;
+            if(selectedFile){
+                await uploadString(imageRef, selectedFile, "data_url");
+                const downloadURL = await getDownloadURL(imageRef);
+                await updateDoc(postDocRef, { imageURL: downloadURL });
+          
+                newPost.imageURL = downloadURL;
+            }
+            newPost.imageURL = null;
       
             if (userProfile.uid === authUser.uid)
               createPost({ ...newPost, id: postDocRef.id });

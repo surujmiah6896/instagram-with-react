@@ -10,7 +10,7 @@ const postStore = create((set) => ({
                 return{
                     ...post,
                     comments: [...post.comments, comment],
-                }
+                };
             }
             return post;
         }),

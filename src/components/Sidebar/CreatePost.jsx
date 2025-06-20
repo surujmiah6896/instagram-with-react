@@ -19,28 +19,16 @@ import {
 import { CreatePostLogo } from "../../assets/constants";
 import { BsFillImageFill } from "react-icons/bs";
 import { useRef, useState } from "react";
-import usePreviewImg from "../../hooks/usePreviewImg";
 import useShowToast from "../../hooks/useShowToast";
-import useAuthStore from "../../store/authStore";
-import usePostStore from "../../store/postStore";
-import useUserProfileStore from "../../store/userProfileStore";
-import { useLocation } from "react-router-dom";
-import {
-  addDoc,
-  arrayUnion,
-  collection,
-  doc,
-  updateDoc,
-} from "firebase/firestore";
-import { firestore, storage } from "../../firebase/firebase";
-import { getDownloadURL, ref, uploadString } from "firebase/storage";
+import useCreatePost from "../../hooks/useCreatePost";
+import usePreviewImg from "../../hooks/usePreviewImg";
 
 const CreatePost = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [caption, setCaption] = useState("");
   const imageRef = useRef(null);
-  const { handleImageChange, selectedFile, setSelectedFile } = usePreviewImg();
-  const showToast = useShowToast();
+  const { handleImage, selectedFile, setSelectedFile } = usePreviewImg();
+  const Toast = useShowToast();
   const { isLoading, handleCreatePost } = useCreatePost();
 
   const handlePostCreation = async () => {
@@ -50,7 +38,7 @@ const CreatePost = () => {
       setCaption("");
       setSelectedFile(null);
     } catch (error) {
-      showToast("Error", error.message, "error");
+      Toast("Error", error.message, "error");
     }
   };
 
@@ -92,12 +80,7 @@ const CreatePost = () => {
               onChange={(e) => setCaption(e.target.value)}
             />
 
-            <Input
-              type="file"
-              hidden
-              ref={imageRef}
-              onChange={handleImageChange}
-            />
+            <Input type="file" hidden ref={imageRef} onChange={handleImage} />
 
             <BsFillImageFill
               onClick={() => imageRef.current.click()}
