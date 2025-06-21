@@ -7,7 +7,7 @@ import UseAuthStore from '../../store/authStore';
 const PostFooter = ({post, isProfilePage}) => {
     const [liked, setLiked] = useState(false);
     const [likes, setLikes] = useState(1000);
-    const [comment, setComment] = useState(null);
+    const [comment, setComment] = useState("");
     const {isCommenting, onCommentPost} = useCommentPost();
     const authUser = UseAuthStore((state) => state.user);
     const commentRef = useRef(null);
@@ -65,13 +65,13 @@ const PostFooter = ({post, isProfilePage}) => {
         >
           <Input
           onChange={(e)=> setComment(e.target.value)}
-            color={"whiteAlpha.400"}
+            color={"whiteAlpha.600"}
             placeholder={"Add a Comment..."}
             fontSize={14}
           ></Input>
           <Button
             isLoading={isCommenting}
-            onClick={onCommentPost(post.id, comment)}
+            onClick={() => onCommentPost(post.id, comment)}
             fontSize={14}
             fontWeight={600}
             cursor={"pointer"}

@@ -12,6 +12,7 @@ const useCommentPost = () => {
     const addComment = postStore((state) => state.addComment);
 
     const onCommentPost = async(postId, comment) => {
+        if(!comment) return Toast("Warning","Please Enter Comment", "warning");
         if(isCommenting) return;
         if(!authUser){
             Toast("Error", "You must be logged in to comment", "error");

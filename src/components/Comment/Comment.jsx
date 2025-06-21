@@ -1,27 +1,33 @@
 import { Avatar, Flex, Text } from '@chakra-ui/react'
 import React from 'react'
+import useUserProfileStore from '../../store/userProfileStore'
 
-const Comment = ({createdAt, username, profilePhoto, text}) => {
+const Comment = ({comment}) => {
+  console.log("comment", comment);
+  
+  const userProfile = useUserProfileStore((state) => state.userProfile);
   return (
     <>
-        <Flex gap={4}>
-            <Avatar src={profilePhoto} name={username} size={"sm"}/>
-              <Flex direction={"column"}>
-                <Flex gap={2}>
-                  <Text fontWeight={"bold"} fontSize={12}>
-                      {username}
-                  </Text>
-                  <Text fontSize={14}>
-                    {text}
-                  </Text>
-                </Flex>
-                <Text fontSize={12} color={"gray"}>
-                  {createdAt}
-                </Text>
-              </Flex>  
+      <Flex gap={4}>
+        <Avatar
+          src={userProfile.profilePicURL}
+          name={userProfile.username}
+          size={"sm"}
+        />
+        <Flex direction={"column"}>
+          <Flex gap={2}>
+            <Text fontWeight={"bold"} fontSize={12}>
+              {userProfile.username}
+            </Text>
+            <Text fontSize={14}>{comment.comment || ""}</Text>
+          </Flex>
+          <Text fontSize={12} color={"gray"}>
+            {/* {createdAt} */}
+          </Text>
         </Flex>
+      </Flex>
     </>
-  )
+  );
 }
 
 export default Comment

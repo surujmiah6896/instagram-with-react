@@ -131,7 +131,7 @@ const ProfilePost = ({ post }) => {
                       borderRadius={4}
                       p={1}
                       isLoading={isDeleting}
-                      onClick={()=>deletePost(post.id)}
+                      onClick={() => deletePost(post.id)}
                       _hover={{ bg: "whiteAlpha.300", color: "red.600" }}
                     >
                       <MdDelete size={20} cursor="pointer" />
@@ -145,73 +145,9 @@ const ProfilePost = ({ post }) => {
                   overflowY={"auto"}
                   w={"full"}
                 >
-                  <Comment
-                    createdAt="1d ago"
-                    username="Md. Suruj Miah"
-                    profilePhoto="/img4.png"
-                    text="Looking Good"
-                  />
-
-                  <Comment
-                    createdAt="1d ago"
-                    username="Md. Suruj Miah"
-                    profilePhoto="/img4.png"
-                    text="Looking Good"
-                  />
-
-                  <Comment
-                    createdAt="1d ago"
-                    username="Md. Suruj Miah"
-                    profilePhoto="/img4.png"
-                    text="Looking Good"
-                  />
-
-                  <Comment
-                    createdAt="1d ago"
-                    username="Md. Suruj Miah"
-                    profilePhoto="/img3.png"
-                    text="Looking Good"
-                  />
-                  <Comment
-                    createdAt="1d ago"
-                    username="Md. Suruj Miah"
-                    profilePhoto="/img4.png"
-                    text="Looking Good"
-                  />
-
-                  <Comment
-                    createdAt="1d ago"
-                    username="Md. Suruj Miah"
-                    profilePhoto="/img2.png"
-                    text="Looking Good"
-                  />
-
-                  <Comment
-                    createdAt="1d ago"
-                    username="Md. Suruj Miah"
-                    profilePhoto="/img3.png"
-                    text="Looking Good"
-                  />
-                  <Comment
-                    createdAt="1d ago"
-                    username="Md. Suruj Miah"
-                    profilePhoto="/img3.png"
-                    text="Looking Good"
-                  />
-
-                  <Comment
-                    createdAt="1d ago"
-                    username="Md. Suruj Miah"
-                    profilePhoto="/img3.png"
-                    text="Looking Good"
-                  />
-
-                  <Comment
-                    createdAt="1d ago"
-                    username="Md. Suruj Miah"
-                    profilePhoto="/img3.png"
-                    text="Looking Good"
-                  />
+                  {post.comments.map((comment) => (
+                    <Comment key={comment.id} comment={comment} />
+                  ))}
                 </VStack>
                 <Divider my={4} bg={"gray.800"} />
                 <PostFooter post={post} isProfilePage={true} />
