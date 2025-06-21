@@ -23,8 +23,14 @@ import { FaComment } from 'react-icons/fa'
 import { MdDelete } from "react-icons/md";
 import Comment from "../Comment/Comment";
 import PostFooter from "../../pages/FeedPosts/PostFooter";
+import useUserProfileStore from "../../store/userProfileStore";
+import UseAuthStore from "../../store/authStore";
+import useDeletePost from "../../hooks/useDeletePost";
 
 const ProfilePost = ({ post }) => {
+  const userProfile = useUserProfileStore((state) => state.userProfile);
+  const authUser = UseAuthStore((state) => state.user);
+  const {isDeleting, deletePost} = useDeletePost();
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
@@ -100,7 +106,7 @@ const ProfilePost = ({ post }) => {
                 border={"1px solid"}
                 flex={1.5}
               >
-                <Image src="/img1.png" alt="profile post" />
+                <Image src="/img3.png" alt="profile post" />
               </Box>
               <Flex
                 flex={1}
@@ -111,22 +117,28 @@ const ProfilePost = ({ post }) => {
                 <Flex alignItems={"center"} justifyContent={"space-between"}>
                   <Flex alignItems={"center"} gap={4}>
                     <Avatar
-                      src="/profilepic.png"
+                      src={userProfile.profilePicURL}
                       size={"sm"}
-                      name="Md. Suruj Miah"
+                      name={userProfile.username}
                     />
                     <Text fontWeight={"bold"} fontSize={12}>
-                      user name
+                      {userProfile.fullName}
                     </Text>
                   </Flex>
 
-                  <Box
-                    borderRadius={4}
-                    p={1}
-                    _hover={{ bg: "whiteAlpha.300", color: "red.600" }}
-                  >
-                    <MdDelete size={20} cursor="pointer" />
-                  </Box>
+                  {authUser.uid === userProfile.uid && (
+                    <Button
+                      size={"sm"}
+                      bg={"transparent"}
+                      borderRadius={4}
+                      p={1}
+                      isLoading={isDeleting}
+                      onClick={()=>deletePost(post.id)}
+                      _hover={{ bg: "whiteAlpha.300", color: "red.600" }}
+                    >
+                      <MdDelete size={20} cursor="pointer" />
+                    </Button>
+                  )}
                 </Flex>
                 <Divider bg={"gray.500"} my={4} />
                 <VStack
@@ -138,7 +150,21 @@ const ProfilePost = ({ post }) => {
                   <Comment
                     createdAt="1d ago"
                     username="Md. Suruj Miah"
-                    profilePhoto="/img3.png"
+                    profilePhoto="/img4.png"
+                    text="Looking Good"
+                  />
+
+                  <Comment
+                    createdAt="1d ago"
+                    username="Md. Suruj Miah"
+                    profilePhoto="/img4.png"
+                    text="Looking Good"
+                  />
+
+                  <Comment
+                    createdAt="1d ago"
+                    username="Md. Suruj Miah"
+                    profilePhoto="/img4.png"
                     text="Looking Good"
                   />
 
@@ -148,31 +174,17 @@ const ProfilePost = ({ post }) => {
                     profilePhoto="/img3.png"
                     text="Looking Good"
                   />
-
                   <Comment
                     createdAt="1d ago"
                     username="Md. Suruj Miah"
-                    profilePhoto="/img3.png"
+                    profilePhoto="/img4.png"
                     text="Looking Good"
                   />
 
                   <Comment
                     createdAt="1d ago"
                     username="Md. Suruj Miah"
-                    profilePhoto="/img3.png"
-                    text="Looking Good"
-                  />
-                  <Comment
-                    createdAt="1d ago"
-                    username="Md. Suruj Miah"
-                    profilePhoto="/img3.png"
-                    text="Looking Good"
-                  />
-
-                  <Comment
-                    createdAt="1d ago"
-                    username="Md. Suruj Miah"
-                    profilePhoto="/img3.png"
+                    profilePhoto="/img2.png"
                     text="Looking Good"
                   />
 
