@@ -1,10 +1,10 @@
 import { Avatar, Flex, Text } from '@chakra-ui/react'
 import useGetUserProfileById from "../../hooks/useGetUserProfileById"
+import CommentSkeleton from './CommentSkeleton';
 
 const Comment = ({comment}) => {
-  
   const {userProfile, isLoading} = useGetUserProfileById(comment.createdBy);
-  console.log("userProfile", userProfile);
+  
   if(isLoading) return (<CommentSkeleton />);
   return (
     <>
