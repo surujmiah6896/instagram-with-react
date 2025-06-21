@@ -43,7 +43,7 @@ const PostFooter = ({post, isProfilePage}) => {
         </Flex>
 
         <Text fontWeight={600} fontSize={"sm"}>
-          {likes} likes
+          {post.likes.length} likes
         </Text>
 
         {!isProfilePage && (
@@ -61,32 +61,34 @@ const PostFooter = ({post, isProfilePage}) => {
           </>
         )}
 
-        <Flex
-          alignItems={"center"}
-          gap={2}
-          justifyContent={"space-between"}
-          w={"full"}
-        >
-          <Input
-            onChange={(e) => setComment(e.target.value)}
-            value={comment}
-            color={"whiteAlpha.600"}
-            placeholder={"Add a Comment..."}
-            fontSize={14}
-          ></Input>
-          <Button
-            isLoading={isCommenting}
-            onClick={handleSubmitComment}
-            fontSize={14}
-            fontWeight={600}
-            cursor={"pointer"}
-            color={"blue.500"}
-            _hover={{ color: "white" }}
-            bg={"transparent"}
+        {authUser && (
+          <Flex
+            alignItems={"center"}
+            gap={2}
+            justifyContent={"space-between"}
+            w={"full"}
           >
-            Post
-          </Button>
-        </Flex>
+            <Input
+              onChange={(e) => setComment(e.target.value)}
+              value={comment}
+              color={"whiteAlpha.600"}
+              placeholder={"Add a Comment..."}
+              fontSize={14}
+            ></Input>
+            <Button
+              isLoading={isCommenting}
+              onClick={handleSubmitComment}
+              fontSize={14}
+              fontWeight={600}
+              cursor={"pointer"}
+              color={"blue.500"}
+              _hover={{ color: "white" }}
+              bg={"transparent"}
+            >
+              Post
+            </Button>
+          </Flex>
+        )}
       </Box>
     </>
   );
