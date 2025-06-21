@@ -7,14 +7,26 @@ const Comment = ({comment}) => {
   const { userProfile, isLoading } = useGetUserProfileById(comment.createdBy);
 
   if(isLoading) return (<CommentSkeleton />);
+
+  // const handleTime = () =>{
+  //   const time = null;
+  //   setTimeout(()=>{
+  //     this.time = timeAgo(comment.createdAt);
+  //   },2000);
+  //   return time;
+  // }
   return (
     <>
       <Flex gap={4}>
         <Link to={`/${userProfile.username}`}>
-          <Avatar src={userProfile.profilePicURL} name={userProfile.username} size={"sm"} />
+          <Avatar
+            src={userProfile.profilePicURL}
+            name={userProfile.username}
+            size={"sm"}
+          />
         </Link>
         <Flex direction={"column"}>
-          <Flex gap={2}>
+          <Flex gap={2} alignItems={"center"}>
             <Link to={`/${userProfile.username}`}>
               <Text fontWeight={"bold"} fontSize={12}>
                 {userProfile.username}

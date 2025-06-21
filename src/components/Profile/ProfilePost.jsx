@@ -24,6 +24,7 @@ import PostFooter from "../../pages/FeedPosts/PostFooter";
 import useUserProfileStore from "../../store/userProfileStore";
 import UseAuthStore from "../../store/authStore";
 import useDeletePost from "../../hooks/useDeletePost";
+import CommentCaption from "../Comment/CommentCaption";
 
 const ProfilePost = ({ post }) => {
   console.log('comments on post', post.comments);
@@ -147,6 +148,9 @@ const ProfilePost = ({ post }) => {
                   overflowY={"auto"}
                   w={"full"}
                 >
+                  {post.caption && (<CommentCaption post={post}/>)}
+                  
+                  {/* comment */}
                   {post.comments.map((comment) => (
                     <Comment key={comment.id} comment={comment} />
                   ))}
