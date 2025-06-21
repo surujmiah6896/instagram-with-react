@@ -214,17 +214,10 @@ const ProfilePost = ({ post }) => {
                   />
                 </VStack>
                 <Divider my={4} bg={"gray.800"} />
-                <PostFooter isProfilePage={true} />
+                <PostFooter post={post} isProfilePage={true} />
               </Flex>
             </Flex>
           </ModalBody>
-
-          {/* <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button variant="ghost">Secondary Action</Button>
-          </ModalFooter> */}
         </ModalContent>
       </Modal>
     </>
