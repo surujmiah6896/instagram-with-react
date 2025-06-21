@@ -24,8 +24,8 @@ const useLikePost = (post) => {
 
             setIsLiked(!isLiked);
             isLiked ? setLikes(likes - 1) : setLikes(likes + 1);
-            
-            Toast("Success", "Liked Successfully", "success");
+            const message = isLiked ? "Unliked" : "Liked" ;
+            Toast("Success", `${message} Successfully`, "success");
         } catch (error) {
             Toast("Error", error.message, "error");
         }finally{

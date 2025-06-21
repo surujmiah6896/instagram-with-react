@@ -6,8 +6,6 @@ import UseAuthStore from '../../store/authStore';
 import useLikePost from '../../hooks/useLikePost';
 
 const PostFooter = ({post, isProfilePage}) => {
-    const [liked, setLiked] = useState(false);
-    // const [likes, setLikes] = useState(1000);
     const [comment, setComment] = useState("");
     const {isCommenting, onCommentPost} = useCommentPost();
     const authUser = UseAuthStore((state) => state.user);
@@ -31,7 +29,7 @@ const PostFooter = ({post, isProfilePage}) => {
     <>
       <Box my={4} marginTop={"auto"}>
         <Flex alignItems={"center"} gap={2} w={"full"} pt={0} mb={0} my={4}>
-          <Box onClick={() => handleLikePost} cursor={"pointer"} fontSize={15}>
+          <Box onClick={handleLikePost} cursor={"pointer"} fontSize={15}>
             {!isLiked ? <NotificationsLogo /> : <UnlikeLogo />}
           </Box>
 
@@ -45,7 +43,7 @@ const PostFooter = ({post, isProfilePage}) => {
         </Flex>
 
         <Text fontWeight={600} fontSize={"sm"}>
-          {post.likes.length} likes
+          {likes} likes
         </Text>
 
         {!isProfilePage && (
