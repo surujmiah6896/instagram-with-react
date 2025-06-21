@@ -1,8 +1,7 @@
 import { useState } from "react"
 import useShowToast from "./useShowToast";
 import UseAuthStore from "../store/authStore";
-import { deleteObject, ref } from "firebase/storage";
-import { firestore, storage } from "../firebase/firebase";
+import { firestore } from "../firebase/firebase";
 import { arrayRemove, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import postStore from "../store/postStore";
 import useUserProfileStore from "../store/userProfileStore";
