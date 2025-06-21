@@ -4,27 +4,28 @@ import { CommentLogo, NotificationsLogo, UnlikeLogo } from '../../assets/constan
 import useCommentPost from '../../hooks/useCommentPost';
 import UseAuthStore from '../../store/authStore';
 import useLikePost from '../../hooks/useLikePost';
+import { timeAgo } from "../../utils/timeAgo";
 
-const PostFooter = ({post, isProfilePage}) => {
-    const [comment, setComment] = useState("");
-    const {isCommenting, onCommentPost} = useCommentPost();
-    const authUser = UseAuthStore((state) => state.user);
-    const commentRef = useRef(null);
-    const { isLiked, likes, isUpdating, handleLikePost} = useLikePost(post);
+const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
+  const [comment, setComment] = useState("");
+  const { isCommenting, onCommentPost } = useCommentPost();
+  const authUser = UseAuthStore((state) => state.user);
+  const commentRef = useRef(null);
+  const { isLiked, likes, isUpdating, handleLikePost } = useLikePost(post);
 
-    const handleSubmitComment = async() =>{
-        await onCommentPost(post.id, comment);
-        setComment("");
-    }
-    // const handleLike = () =>{
-    //     if(liked){
-    //         setLiked(false);
-    //         setLikes(likes - 1);
-    //     }else{
-    //         setLiked(true);
-    //         setLikes(likes + 1);
-    //     }
-    // }
+  const handleSubmitComment = async () => {
+    await onCommentPost(post.id, comment);
+    setComment("");
+  };
+  // const handleLike = () =>{
+  //     if(liked){
+  //         setLiked(false);
+  //         setLikes(likes - 1);
+  //     }else{
+  //         setLiked(true);
+  //         setLikes(likes + 1);
+  //     }
+  // }
   return (
     <>
       <Box my={4} marginTop={"auto"}>
@@ -46,18 +47,30 @@ const PostFooter = ({post, isProfilePage}) => {
           {likes} likes
         </Text>
 
+        {isProfilePage && (
+          <Text fontSize="12" color={"gray"}>
+            Posted {timeAgo(post.createdAt)}
+          </Text>
+        )}
+
         {!isProfilePage && (
           <>
             <Text fontSize="sm" fontWeight={700}>
-              {authUser.username}{" "}
+              {creatorProfile?.username}{" "}
               <Text as={"span"} fontWeight={400}>
-                Feeling good
+                {post.caption}
               </Text>
             </Text>
-
-            <Text fontSize="sm" color={"gray"}>
-              view all {post.comments.length} comments
-            </Text>
+            {post.comments.length > 0 && (
+              <Text
+                fontSize="sm"
+                color={"gray"}
+                cursor={"pointer"}
+                // onClick={onOpen}
+              >
+                View all {post.comments.length} comments
+              </Text>
+            )}
           </>
         )}
 
@@ -93,6 +106,6 @@ const PostFooter = ({post, isProfilePage}) => {
       </Box>
     </>
   );
-}
+};
 
 export default PostFooter
