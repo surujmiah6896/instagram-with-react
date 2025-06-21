@@ -3,34 +3,36 @@ import React, { useRef, useState } from 'react'
 import { CommentLogo, NotificationsLogo, UnlikeLogo } from '../../assets/constants';
 import useCommentPost from '../../hooks/useCommentPost';
 import UseAuthStore from '../../store/authStore';
+import useLikePost from '../../hooks/useLikePost';
 
 const PostFooter = ({post, isProfilePage}) => {
     const [liked, setLiked] = useState(false);
-    const [likes, setLikes] = useState(1000);
+    // const [likes, setLikes] = useState(1000);
     const [comment, setComment] = useState("");
     const {isCommenting, onCommentPost} = useCommentPost();
     const authUser = UseAuthStore((state) => state.user);
     const commentRef = useRef(null);
+    const { isLiked, likes, isUpdating, handleLikePost} = useLikePost(post);
 
-    const handleSubmitComment = async(e) =>{
+    const handleSubmitComment = async() =>{
         await onCommentPost(post.id, comment);
         setComment("");
     }
-    const handleLike = () =>{
-        if(liked){
-            setLiked(false);
-            setLikes(likes - 1);
-        }else{
-            setLiked(true);
-            setLikes(likes + 1);
-        }
-    }
+    // const handleLike = () =>{
+    //     if(liked){
+    //         setLiked(false);
+    //         setLikes(likes - 1);
+    //     }else{
+    //         setLiked(true);
+    //         setLikes(likes + 1);
+    //     }
+    // }
   return (
     <>
       <Box my={4} marginTop={"auto"}>
         <Flex alignItems={"center"} gap={2} w={"full"} pt={0} mb={0} my={4}>
-          <Box onClick={handleLike} cursor={"pointer"} fontSize={15}>
-            {!liked ? <NotificationsLogo /> : <UnlikeLogo />}
+          <Box onClick={() => handleLikePost} cursor={"pointer"} fontSize={15}>
+            {!isLiked ? <NotificationsLogo /> : <UnlikeLogo />}
           </Box>
 
           <Box

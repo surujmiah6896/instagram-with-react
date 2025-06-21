@@ -3,7 +3,6 @@ import React from 'react'
 import useUserProfileStore from '../../store/userProfileStore'
 
 const Comment = ({comment}) => {
-  console.log("comment", comment);
   
   const userProfile = useUserProfileStore((state) => state.userProfile);
   return (
