@@ -1,28 +1,29 @@
-import { Avatar, Flex, Text } from '@chakra-ui/react'
+import { Avatar, Flex, Link, Text } from '@chakra-ui/react'
 import useGetUserProfileById from "../../hooks/useGetUserProfileById"
 import CommentSkeleton from './CommentSkeleton';
+import {timeAgo} from "../../utils/timeAgo";
 
 const Comment = ({comment}) => {
-  const {userProfile, isLoading} = useGetUserProfileById(comment.createdBy);
-  
+  const { userProfile, isLoading } = useGetUserProfileById(comment.createdBy);
+
   if(isLoading) return (<CommentSkeleton />);
   return (
     <>
       <Flex gap={4}>
-        <Avatar
-          src={userProfile.profilePicURL || ""}
-          name={userProfile.username}
-          size={"sm"}
-        />
+        <Link to={`/${userProfile.username}`}>
+          <Avatar src={userProfile.profilePicURL} name={userProfile.username} size={"sm"} />
+        </Link>
         <Flex direction={"column"}>
           <Flex gap={2}>
-            <Text fontWeight={"bold"} fontSize={12}>
-              {/* {userProfile.username} */}
-            </Text>
-            <Text fontSize={14}>{comment.comment || ""}</Text>
+            <Link to={`/${userProfile.username}`}>
+              <Text fontWeight={"bold"} fontSize={12}>
+                {userProfile.username}
+              </Text>
+            </Link>
+            <Text fontSize={14}>{comment.comment}</Text>
           </Flex>
           <Text fontSize={12} color={"gray"}>
-            {/* {createdAt} */}
+            {timeAgo(comment.createdAt)}
           </Text>
         </Flex>
       </Flex>
