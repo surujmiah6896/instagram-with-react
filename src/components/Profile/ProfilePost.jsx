@@ -26,6 +26,8 @@ import UseAuthStore from "../../store/authStore";
 import useDeletePost from "../../hooks/useDeletePost";
 
 const ProfilePost = ({ post }) => {
+  console.log('comments on post', post.comments);
+  
   const userProfile = useUserProfileStore((state) => state.userProfile);
   const authUser = UseAuthStore((state) => state.user);
   const {isDeleting, deletePost} = useDeletePost();

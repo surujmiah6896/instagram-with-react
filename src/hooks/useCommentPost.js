@@ -32,7 +32,7 @@ const useCommentPost = () => {
             });
 
             //update state
-            addComment(postId, comment);
+            addComment(postId, newComment);
             Toast("Success", "Commented Successfully", "success");
         } catch (error) {
             Toast("Error", error.message, "error");

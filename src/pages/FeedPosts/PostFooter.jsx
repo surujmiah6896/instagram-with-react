@@ -12,6 +12,10 @@ const PostFooter = ({post, isProfilePage}) => {
     const authUser = UseAuthStore((state) => state.user);
     const commentRef = useRef(null);
 
+    const handleSubmitComment = async(e) =>{
+        await onCommentPost(post.id, comment);
+        setComment("");
+    }
     const handleLike = () =>{
         if(liked){
             setLiked(false);
@@ -64,14 +68,15 @@ const PostFooter = ({post, isProfilePage}) => {
           w={"full"}
         >
           <Input
-          onChange={(e)=> setComment(e.target.value)}
+            onChange={(e) => setComment(e.target.value)}
+            value={comment}
             color={"whiteAlpha.600"}
             placeholder={"Add a Comment..."}
             fontSize={14}
           ></Input>
           <Button
             isLoading={isCommenting}
-            onClick={() => onCommentPost(post.id, comment)}
+            onClick={handleSubmitComment}
             fontSize={14}
             fontWeight={600}
             cursor={"pointer"}
