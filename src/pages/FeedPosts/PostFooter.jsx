@@ -76,6 +76,7 @@ const PostFooter = ({post, isProfilePage}) => {
               color={"whiteAlpha.600"}
               placeholder={"Add a Comment..."}
               fontSize={14}
+              ref={commentRef}
             ></Input>
             <Button
               isLoading={isCommenting}
