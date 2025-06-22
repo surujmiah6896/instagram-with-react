@@ -16,7 +16,7 @@ A simple React and Firebase project like Instagram.
 
 ```bash
 git clone https://github.com/surujmiah6896/instagram-with-react.git
-cd blog-site
+cd instagram-with-react
 ```
 
 
