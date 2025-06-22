@@ -1,12 +1,43 @@
-# React + Vite
+# React & FireBase Instagram Clone App
+A simple React and Firebase project like Instagram.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
+- User Registration
+- User Create post
+- User Like, Comment, Follow and Unfollow
+- User Profile Update
+- Error handling and validation
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Setup Instructions
 
-## Expanding the ESLint configuration
+### 1. Clone the Repository
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+git clone https://github.com/surujmiah6896/instagram-with-react.git
+cd blog-site
+```
+
+
+## Install Dependencies
+
+```bash
+npm install
+```
+
+## Run Project
+```bash
+npm run dev
+```
+# Development Notes
+- React
+- Node
+- Firebase
+- Zustand
+- chakra-ui
+- react-firebase-hooks
+- react-icons
+- vite
+
+
