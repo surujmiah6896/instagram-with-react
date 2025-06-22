@@ -19,6 +19,7 @@ const PostHeader = ({ post, creatorProfile }) => {
           <Link to={`/${creatorProfile.username}`}>
             <Avatar
               src={creatorProfile.profilePicURL}
+			  name={creatorProfile.username}
               alt="user profile pic"
               size={"sm"}
             />

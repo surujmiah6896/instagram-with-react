@@ -1,6 +1,7 @@
 import { Box, Container, Flex, Skeleton, SkeletonCircle, VStack } from '@chakra-ui/react'
 import FeedPost from './FeedPost'
 import useGetFeedPosts from '../../hooks/useGetFeedPost';
+import NoPostsFound from '../../components/Profile/NoPostsFound';
 
 const FeedPosts = () => {
   const { isLoading, posts } = useGetFeedPosts();
@@ -25,9 +26,9 @@ const FeedPosts = () => {
           </VStack>
         ))}
 
-      {!isLoading &&
-        posts.length > 0 &&
+      {!isLoading && posts.length > 0 &&
         posts.map((post) => <FeedPost key={post.id} post={post} />)}
+      {!isLoading && posts.length === 0 && (<NoPostsFound/>)}
     </Container>
   );
 }
