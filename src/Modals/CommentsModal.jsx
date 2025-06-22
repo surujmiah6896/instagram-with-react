@@ -11,15 +11,16 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
 import useCommentPost from "../hooks/useCommentPost";
+import Comment from "../components/Comment/Comment";
 
 const CommentsModal = ({ isOpen, onClose, post }) => {
-  const { handlePostComment, isCommenting } = useCommentPost();
+  const { onCommentPost, isCommenting } = useCommentPost();
   const commentRef = useRef(null);
   const commentsContainerRef = useRef(null);
   const handleSubmitComment = async (e) => {
     // do not refresh the page, prevent it
     e.preventDefault();
-    await handlePostComment(post.id, commentRef.current.value);
+    await onCommentPost(post.id, commentRef.current.value);
     commentRef.current.value = "";
   };
 

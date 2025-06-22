@@ -4,12 +4,13 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyCnnPiYeipXVDLv71V-pnNtMWNOhx4AcCM",
-    authDomain: "react-quiz-app-79073.firebaseapp.com",
-    projectId: "react-quiz-app-79073",
-    storageBucket: "react-quiz-app-79073.firebasestorage.app",
-    messagingSenderId: "916479961888",
-    appId: "1:916479961888:web:513af85b48b98d61828545"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+	authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+	projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+	storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+	messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+	appId: import.meta.env.VITE_FIREBASE_APP_ID,
+	measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
   };
   
   // Initialize Firebase

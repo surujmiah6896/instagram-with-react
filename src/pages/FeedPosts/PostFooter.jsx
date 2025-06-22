@@ -1,10 +1,11 @@
 import { Box, Button, Flex, Input, Text, useDisclosure } from '@chakra-ui/react'
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { CommentLogo, NotificationsLogo, UnlikeLogo } from '../../assets/constants';
 import useCommentPost from '../../hooks/useCommentPost';
 import UseAuthStore from '../../store/authStore';
 import useLikePost from '../../hooks/useLikePost';
 import { timeAgo } from "../../utils/timeAgo";
+import CommentsModal from '../../Modals/CommentsModal';
 
 const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
   const [comment, setComment] = useState("");
@@ -57,7 +58,7 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
                 fontSize="sm"
                 color={"gray"}
                 cursor={"pointer"}
-                // onClick={onOpen}
+                onClick={onOpen}
               >
                 View all {post.comments.length} comments
               </Text>
